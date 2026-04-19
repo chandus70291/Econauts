@@ -35,6 +35,7 @@ public class Orders {
     // ✅ ENUMS (clean & structured)
     public enum OrderStatus {
         PENDING,
+        PLACED,
         CONFIRMED,
         SHIPPED,
         DELIVERED,

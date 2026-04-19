@@ -10,11 +10,9 @@ public class Cart {
     private Long id;
 
     private String email;
-    
-    private Long productId;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id") // ✅ ONLY ONE mapping
     private Product product;
 
     private int quantity;
@@ -31,12 +29,4 @@ public class Cart {
 
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
-    
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
 }

@@ -23,7 +23,6 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthFilter jwtAuthFilter;
 
-    // ✅ ADD THIS (VERY IMPORTANT)
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration config) throws Exception {
@@ -32,7 +31,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
+    try
+    {
         http
             .csrf(csrf -> csrf.disable())
             .cors(cors -> {})
@@ -65,5 +65,10 @@ public class SecurityConfig {
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+	    }
+	    catch(Exception ex)
+	    {
+	    	throw new Exception("Authentication issue"+ ex.getMessage() + ex);
+	    }
     }
 }

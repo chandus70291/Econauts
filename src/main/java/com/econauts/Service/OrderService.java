@@ -52,8 +52,7 @@ public class OrderService {
 
         for (Cart item : cartItems) {
 
-            Product product = productRepository.findById(item.getProductId())
-                    .orElseThrow(() -> new RuntimeException("Product not found"));
+            Product product = item.getProduct(); // ✅ FIXED
 
             OrderItem orderItem = new OrderItem();
             orderItem.setProductId(product.getId());
